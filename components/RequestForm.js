@@ -18,7 +18,7 @@ export default class RequestForm extends React.Component {
 
     this.state = {
       formData: {
-        type: '',
+        request_address: '',
         person: '',
         description: '',
         images: [],
@@ -29,7 +29,7 @@ export default class RequestForm extends React.Component {
   }
 
   validationRules = {
-    type: {
+    request_address: {
       min: 2,
     },
     person: {
@@ -101,17 +101,17 @@ export default class RequestForm extends React.Component {
         />
 
         <Input
-          value = { this.state.formData.type }
-          onChangeText = { value => this.setState({ formData: { ...this.state.formData, type: value } }) }
-          placeholder = "Tipologia Intervento Ricihesto"
-          haveError = { this.haveError('type') }
+          value = { this.state.formData.request_address }
+          onChangeText = { value => this.setState({ formData: { ...this.state.formData, request_address: value } }) }
+          placeholder = "Indirizzo dell'intervento"
+          haveError = { this.haveError('request_address') }
           placeholderTextColor = "#333"
         />
 
         <Input
           value = { this.state.formData.person }
           onChangeText = { value => this.setState({ formData: { ...this.state.formData, person: value } }) }
-          placeholder = "Persona di Riferimento"
+          placeholder = "Persona da Contattare"
           haveError = { this.haveError('person') }
           placeholderTextColor = "#333"
         />
