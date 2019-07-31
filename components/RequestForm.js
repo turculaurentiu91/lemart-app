@@ -18,6 +18,7 @@ export default class RequestForm extends React.Component {
 
     this.state = {
       formData: {
+        model: '',
         request_address: '',
         person: '',
         description: '',
@@ -36,6 +37,9 @@ export default class RequestForm extends React.Component {
       min: 2,
     },
     description: {
+      min: 2,
+    },
+    model: {
       min: 2,
     },
   }
@@ -98,6 +102,14 @@ export default class RequestForm extends React.Component {
           images={ this.state.formData.images } 
           selectImage={ this.selectImage }
           removeImage={ this.removeImage }
+        />
+
+        <Input
+          value = { this.state.formData.model }
+          onChangeText = { value => this.setState({ formData: { ...this.state.formData, model: value } }) }
+          placeholder = "Marca, Modello e Tipo"
+          haveError = { this.haveError('model') }
+          placeholderTextColor = "#333"
         />
 
         <Input
