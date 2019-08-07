@@ -1,10 +1,9 @@
 import React from 'react';
-import {ToastAndroid, Platform, View, Text} from 'react-native';
+import {ToastAndroid, Platform, View, Text, AsyncStorage} from 'react-native';
 import { AppLoading, SplashScreen, Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
-import * as SecureStore from 'expo-secure-store';
 import Layout from './components/Layout';
 import RegisterForm from './components/RegisterForm';
 import RequestForm from './components/RequestForm';
@@ -85,7 +84,7 @@ export default class App extends React.Component {
       isReady: true,
     }
 
-    const userData = await SecureStore.getItemAsync('user-data');
+    const userData = await AsyncStorage.getItem('user-data');
     if (userData !== null) {
       newState.userData = JSON.parse(userData);
     }
@@ -95,8 +94,8 @@ export default class App extends React.Component {
   }
 
   setUserData = userData => {
-    SecureStore.setItemAsync('user-data', JSON.stringify(userData));
-    this.setState({userData});
+    AsyncStorage.setItem('user-data', JSON.stringify(userData))
+    .then(() => this.setState({userData}));
   }
 
   submitRequest = request => {
