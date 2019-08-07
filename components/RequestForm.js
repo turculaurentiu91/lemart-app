@@ -107,7 +107,7 @@ export default class RequestForm extends React.Component {
         <Input
           value = { this.state.formData.model }
           onChangeText = { value => this.setState({ formData: { ...this.state.formData, model: value } }) }
-          placeholder = "Marca, Modello e Tipo"
+          placeholder = "Marca Modello e Tipo"
           haveError = { this.haveError('model') }
           placeholderTextColor = "#333"
         />
